@@ -4,9 +4,9 @@ describe('Validator', () => {
   describe('#constructor', () => {
     it('raises when an unsupported schema version is specified', () => {
       expect(() => {
-        new Validator('zora-20190101')
+        new Validator('zap-20190101')
       }).toThrow(
-        'There are no versions in the zora namespace with the 20190101 calendar version'
+        'There are no versions in the zap namespace with the 20190101 calendar version'
       )
 
       expect(() => {
@@ -17,12 +17,12 @@ describe('Validator', () => {
 
   describe('#validate', () => {
     it('it returns true if the schema is correct', () => {
-      const validator = new Validator('zora-20210101')
+      const validator = new Validator('zap-20210101')
       const json = {
         description: 'blah',
         mimeType: 'application/json',
         name: 'who cares',
-        version: 'zora-01012021'
+        version: 'zap-01012021'
       }
 
       const result = validator.validate(json)
@@ -30,12 +30,12 @@ describe('Validator', () => {
     })
 
     it('it returns false if the schema is incorrect', () => {
-      const validator = new Validator('zora-20210101')
+      const validator = new Validator('zap-20210101')
       const json = {
         description: 'blah',
         mimeType: 'application/json',
         name: 'who cares',
-        version: 'zora-01012021',
+        version: 'zap-01012021',
         additionalProperty: 'idk'
       }
 

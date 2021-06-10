@@ -1,10 +1,10 @@
 import { Validator } from '../src/validator'
 
 describe('schemas', () => {
-  describe('zora', () => {
+  describe('zap', () => {
     describe('20210101', () => {
       it('requires all keys', () => {
-        const validator = new Validator('zora-20210101')
+        const validator = new Validator('zap-20210101')
         const json = {
           description: 'blah',
           mimeType: 'application/json',
@@ -16,12 +16,12 @@ describe('schemas', () => {
       })
 
       it('does not allow additional properties', () => {
-        const validator = new Validator('zora-20210101')
+        const validator = new Validator('zap-20210101')
         const json = {
           description: 'blah',
           mimeType: 'application/json',
           name: 'who cares',
-          version: 'zora-01012021',
+          version: 'zap-01012021',
           someAdditionalProperty: 'okay'
         }
 
@@ -30,12 +30,12 @@ describe('schemas', () => {
       })
 
       it('requires string values', () => {
-        const validator = new Validator('zora-20210101')
+        const validator = new Validator('zap-20210101')
         const json = {
           description: 'blah',
           mimeType: 'application/json',
           name: 100,
-          version: 'zora-01012021'
+          version: 'zap-01012021'
         }
 
         const result = validator.validate(json)
@@ -43,12 +43,12 @@ describe('schemas', () => {
       })
 
       it('validates a valid schema', () => {
-        const validator = new Validator('zora-20210101')
+        const validator = new Validator('zap-20210101')
         const json = {
           description: 'blah',
           mimeType: 'application/json',
           name: 'who cares',
-          version: 'zora-01012021'
+          version: 'zap-01012021'
         }
 
         const result = validator.validate(json)
